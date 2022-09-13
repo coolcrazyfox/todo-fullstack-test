@@ -74,7 +74,7 @@ app.put("/todos/:id", async (req, res) => {
     }
 })
 
-// delete a todo
+// delete a todo_
 app.delete("/todos/:id", async (req, res) => {
     try {
         const {

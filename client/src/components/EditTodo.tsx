@@ -39,9 +39,9 @@ const EditTodo = ({ todo }: ToDo) => {
     event.preventDefault();
     try {
       const body = { description };
-      const urlTodo = "https://localhost:5000/todos"
+      const urlTodo = "http://localhost:8000/todos"
       const response = await fetch(
-        `https://localhost:5000/todos/${todo.todo_id}`,
+        `http://localhost8000/todos/${todo.todo_id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
