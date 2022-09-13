@@ -16,13 +16,13 @@ app.use(function (req, res, next) {
 });
 
 // Routes
-// create todo
+// create todo_
 app.post("/todos", async (req, res) => {
     try {
         const {
             description
         } = req.body
-        const newTodo = await pool.query("INSERT INTO todo (description) VALUES($1) RETURNING *", [description])
+        const newTodo = await pool.query("INSERT INTO todo (description) VALUES ($1) RETURNING *", [description])
         res.json(newTodo.rows[0])
     } catch (error) {
         console.error(error.message)
@@ -39,7 +39,7 @@ app.get("/todos", async (req, res) => {
     }
 })
 
-// get a todo
+// get a todo_
 app.get("/todos/:id", async (req, res) => {
     try {
         const {
@@ -52,7 +52,7 @@ app.get("/todos/:id", async (req, res) => {
     }
 })
 
-// update a todo
+// update a todo_
 app.put("/todos/:id", async (req, res) => {
     try {
         const {
@@ -62,11 +62,12 @@ app.put("/todos/:id", async (req, res) => {
             description,
             completed
         } = req.body;
-        if (description) {
-            const editTodo = await pool.query("UPDATE todo SET description = $1 WHERE todo_id = $2", [description, id])
-        } else if (completed) {
-            const completeTodo = await pool.query("UPDATE todo SET completed = $1 WHERE todo_id = $2", [completed, id])
-        }
+        const updateTodo = await pool.query("UPDATE todo SET description = $1 WHERE todo_id = $2", [description, id])
+        // if (description) {
+        //     const editTodo = await pool.query("UPDATE todo SET description = $1 WHERE todo_id = $2", [description, id])
+        // } else if (completed) {
+        //     const completeTodo = await pool.query("UPDATE todo SET completed = $1 WHERE todo_id = $2", [completed, id])
+        // }
         res.json("todo was updated")
     } catch (error) {
         console.error(error.message)
@@ -86,6 +87,6 @@ app.delete("/todos/:id", async (req, res) => {
     }
 })
 
-app.listen(process.env.PORT || 8000, () => {
-    console.log(`server has started on port ${process.env.PORT || 8000}`)
+app.listen(process.env.PORT || 5000, () => {
+    console.log(`server has started on port ${process.env.PORT || 5000}`)
 })

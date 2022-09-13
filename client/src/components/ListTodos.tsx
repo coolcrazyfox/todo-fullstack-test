@@ -19,7 +19,7 @@ export interface ToDo {
 
 interface ToDoContainer extends Array<ToDo> {}
 
-export const urlTodo = "https://localhost:8000/todos"
+export const urlTodo = "https://localhost:5000/todos"
 
 const ListTodos = () => {
   const [todos, setTodos] = useState<ToDoContainer>([]);
@@ -29,7 +29,7 @@ const ListTodos = () => {
       const response = await fetch(urlTodo);
       const jsonData = await response.json();
       setTodos(jsonData);
-      console.log('state',setTodos(jsonData))
+      // console.log('state',setTodos(jsonData))
     } catch (error) {
       console.error(error.message);
     }
