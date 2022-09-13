@@ -3,6 +3,10 @@ const app = express();
 const cors = require('cors');
 const pool = require("./db");
 
+// https://github.com/topics/pern-stack
+// https://github.com/robdcal/todo-fullstack
+// https://github.com/dfbq91/pern-crud-app
+
 // middleware
 app.use(cors())
 app.use(express.json());
