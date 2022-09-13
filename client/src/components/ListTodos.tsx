@@ -18,7 +18,9 @@ export interface ToDo {
 }
 
 interface ToDoContainer extends Array<ToDo> {}
+
 export const urlTodo = "https://localhost:8000/todos"
+
 const ListTodos = () => {
   const [todos, setTodos] = useState<ToDoContainer>([]);
 
